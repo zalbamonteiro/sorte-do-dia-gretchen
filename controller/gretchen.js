@@ -34,8 +34,10 @@ gretchen.adicionar = function(request, response) {
 };
 
 gretchen.deletar = function(request, response) {
-    db.query('DELETE FROM `my-gifs` WHERE id= '+request.params.gifId, function(error, result){           
-        response.render('list', {result:result, delete: true});        
+    db.query('DELETE FROM `my-gifs` WHERE id= '+request.params.gifId, function(error, result){
+        db.query('SELECT * FROM `my-gifs`', function(error, resultAll){
+            response.render('list', {result: resultAll, delete: true});
+        });
     });	
 };
 
