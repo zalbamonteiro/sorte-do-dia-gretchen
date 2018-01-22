@@ -22,14 +22,14 @@ gretchen.detalhe = function(request, response) {
 };
 
 gretchen.adicionar = function(request, response) {
-	console.log(request);
-	var gif = {
-        phrase  : request.body.phrase,
-        image : request.body.image
-    }
+	console.log(request.body);
+	var gif = [[request.body.phrase, request.body.image]];
 
-    db.query('INSERT INTO `my-gifs` SET ?', gif, function(error, responseult){
-        response.render('list', {result:result, success: true});        
+    db.query('INSERT INTO `my-gifs` (phrase, image) VALUES ?', gif, function(error, result){
+        console.log(error, result)
+        db.query('SELECT * FROM `my-gifs`', function(error, resultAll){
+            response.render('list', {result: resultAll, success: true});
+        });
     });	
 };
 
