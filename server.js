@@ -3,12 +3,14 @@ const bodyParser = require('body-parser')
 const routes 	 = require('./config/router');
 const exphbs 	 = require('express-handlebars');
 const app        = express();
+var multer = require('multer');
+var upload = multer();
 
-const result = [
-	{image: 'alou', phrase: 'alooou1', id: 0},
-	{image: 'alou', phrase: 'alooou2', id: 1},
-	{image: 'alou', phrase: 'alooou3', id: 2}
-];
+
+
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(upload.array()); 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

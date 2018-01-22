@@ -17,18 +17,18 @@ gretchen.listAll = function(request, response) {
 gretchen.detalhe = function(request, response) {	
 	db.query('SELECT * FROM `my-gifs` WHERE id='+request.params.gifId, function(error, result){		
 		const item = result[0];
-		console.log(item);
 	    response.render('detail', item);
     });
 };
 
-gretchen.adicionar = function(request, responseponse) {
+gretchen.adicionar = function(request, response) {
+	console.log(request);
 	var gif = {
-        nome  : request.body.phrase,
-        email : request.body.image
+        phrase  : request.body.phrase,
+        image   : request.body.image
     }
 
-    db.query('INSERT INTO my-gifs SET ?', gif, function(error, responseult){
+    db.query('INSERT INTO my-gifs SET ?', gif, function(error, result){
         response.render('home', {result:result});        
     });	
 };
