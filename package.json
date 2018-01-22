@@ -1,0 +1,16 @@
+{
+  "name": "nodegirls",
+  "version": "1.0.0",
+  "description": "Aplicação de uso de express e handlebars",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zalba Monteiro e Vicky Aiello",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0"
+  }
+}
