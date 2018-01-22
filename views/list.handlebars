@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-sm-4 text-left">
+		<form type="post">
+		  <div class="form-group">
+		    <label for="image">Url da imagem</label>
+		    <input type="text" class="form-control" id="image" placeholder="">
+		  </div>
+		  <div class="form-group">
+		    <label for="phrase">Sorte do dia</label>
+		    <input type="text" class="form-control" id="phrase" placeholder="">
+		  </div>
+		  <button type="submit" class="btn btn-success">Cadastrar</button>
+		</form>
+	</div>
+	<div class="col-sm-8 text-left">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="text-center">Gretchen's cadastradas</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				{{#each result}}
+					<a href="/result/{{id}}" class="btn">
+						{{>item}}
+					</a>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
