@@ -13,18 +13,6 @@ const result = [
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/', function (req, res) {
-	let id = Math.floor(Math.random() * 2) + 0;
-    res.render('home', {id: id});
-});
-
-app.get('/result/:id', function (req, res) {
-	const item = result.filter(function (el) {return (el.id == req.params.id);});
-    res.render('detail', item[0]);
-});
-
-app.get('/new/', function (req, res) {
-    res.render('list', {result: result});
-});
+routes(app);
 
 app.listen(3000);
