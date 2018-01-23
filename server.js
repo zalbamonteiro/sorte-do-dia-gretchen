@@ -1,15 +1,14 @@
-const express    = require('express');
-const bodyParser = require('body-parser')
-const routes 	 = require('./config/router');
-const exphbs 	 = require('express-handlebars');
-const formData   = require("express-form-data");
-const app        = express();
-const multipartyOptions = {
-  autoFiles: true
-};
+const express      = require('express');
+const bodyParser   = require('body-parser')
+const routes 	   = require('./config/router');
+const exphbs 	   = require('express-handlebars');
+const app          = express();
+const cookieParser = require('cookie-parser');
 
-//app.use(bodyParser.json());
-app.use(formData.parse(multipartyOptions));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
