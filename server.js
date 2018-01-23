@@ -2,16 +2,16 @@ const express    = require('express');
 const bodyParser = require('body-parser')
 const routes 	 = require('./config/router');
 const exphbs 	 = require('express-handlebars');
+const formData   = require("express-form-data");
 const app        = express();
-var multer = require('multer');
-var upload = multer();
+const multipartyOptions = {
+  autoFiles: true
+};
 
 
 
 //app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(upload.array()); 
-
+app.use(formData.parse(multipartyOptions));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
