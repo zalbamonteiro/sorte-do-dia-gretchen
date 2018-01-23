@@ -1,4 +1,8 @@
-<div class="col-sm-12 text-center">
-  <img src="{{image}}" class="rounded" alt="{{phrase}}">
-  <p>{{phrase}}</p>
+<div class="col-sm-4 text-center">
+  <img src="{{image}}" class="rounded" width="100%" alt="{{phrase}}">
+  <p>{{phrase}}
+	  {{#if list}}
+	  <a href="/delete/{{id}}" class="close text-danger"><span aria-hidden="true">&times;</span></a>
+	  {{/if}}
+  </p>
 </div>

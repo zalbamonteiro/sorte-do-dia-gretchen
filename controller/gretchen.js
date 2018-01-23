@@ -22,20 +22,21 @@ gretchen.detalhe = function(request, response) {
 };
 
 gretchen.adicionar = function(request, response) {
-	console.log(request.parser);
-	var gif = {
-        phrase  : request.body.phrase,
-        image   : request.body.image
-    }
-
-    db.query('INSERT INTO `my-gifs` SET ?', gif, function(error, result){
-        response.render('list', {result:result, success: true});        
+    console.log(request.body.phrase);
+	var gif = [[request.body.phrase, request.body.image]];
+    db.query('INSERT INTO `my-gifs` (phrase, image) VALUES ?', gif, function(error, result){
+        console.log(error, result)
+        db.query('SELECT * FROM `my-gifs`', function(error, resultAll){
+            response.render('list', {result: resultAll, success: true});
+        });
     });	
 };
 
 gretchen.deletar = function(request, response) {
-    db.query('DELETE FROM `my-gifs` WHERE id= '+request.params.gifId, function(error, result){           
-        response.render('list', {result:result, delete: true});        
+    db.query('DELETE FROM `my-gifs` WHERE id= '+request.params.gifId, function(error, result){
+        db.query('SELECT * FROM `my-gifs`', function(error, resultAll){
+            response.render('list', {result: resultAll, delete: true});
+        });
     });	
 };
 

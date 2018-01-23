@@ -8,8 +8,6 @@ const multipartyOptions = {
   autoFiles: true
 };
 
-
-
 //app.use(bodyParser.json());
 app.use(formData.parse(multipartyOptions));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

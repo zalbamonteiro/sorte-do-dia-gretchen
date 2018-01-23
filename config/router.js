@@ -9,7 +9,9 @@ module.exports  = function(app) {
     app.route('/new/')
         .post(gretchen.adicionar);
 
-
     app.route('/result/:gifId')
         .get(gretchen.detalhe);
+
+    app.route('/delete/:gifId')
+        .get(gretchen.deletar);
 };
